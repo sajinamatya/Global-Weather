@@ -9,23 +9,32 @@ package com.globalweather.models;
  * @author LENOVO
  */
 public class GlobalWeatherModel {
-    
+     private int sno;
+     private String countryName, cityName,uvIndex; 
     // declaration of global variable 
-    private float temperature , humidity, pressure,visibility, windSpeed, dewPoint , precipitation  ;
-    private String countryName, cityName,uvIndex; 
-    
-    // Constructor of GlobalWeatherModel class 
-    public GlobalWeatherModel(float temperature, float humidity, float pressure, float visibility, float windSpeed, float dewPoint, float precipitation, String countryName, String cityName, String uvIndex) {
+    private float temperature , humidity,visibility, windSpeed, dewPoint , precipitation  ;
+
+    public GlobalWeatherModel(int sno, String countryName, String cityName, String uvIndex, float temperature, float humidity, float visibility, float windSpeed, float dewPoint, float precipitation) {
+        this.sno = sno;
+        this.countryName = countryName;
+        this.cityName = cityName;
+        this.uvIndex = uvIndex;
         this.temperature = temperature;
         this.humidity = humidity;
-        this.pressure = pressure;
         this.visibility = visibility;
         this.windSpeed = windSpeed;
         this.dewPoint = dewPoint;
         this.precipitation = precipitation;
-        this.countryName = countryName;
-        this.cityName = cityName;
-        this.uvIndex = uvIndex;
+    }
+    
+   
+    // Constructor of GlobalWeatherModel class 
+    
+ public GlobalWeatherModel() {
+        // You can initialize default values or leave it empty
+    }
+    public int getSno() {
+        return sno;
     }
     
      // getter method for temperature variable 
@@ -39,9 +48,7 @@ public class GlobalWeatherModel {
     }
     
     // getter method for pressure variable 
-    public float getPressure() {
-        return pressure;
-    }
+    
     
     // getter method for visibility variable 
     public float getVisibility() {
@@ -78,6 +85,9 @@ public class GlobalWeatherModel {
         return uvIndex;
     }
     
+     public void setSno(int sno) {
+        this.sno = sno;
+    }
     // setter  method of temperature variable 
     public void setTemperature(float temperature) {
         this.temperature = temperature;
@@ -89,9 +99,7 @@ public class GlobalWeatherModel {
     }
 
     // setter  method of pressure variable 
-    public void setPressure(float pressure) {
-        this.pressure = pressure;
-    }
+   
 
     // setter  method of visibility variable 
     public void setVisibility(float visibility) {

@@ -4,7 +4,10 @@
  */
 package com.globalweather.views;
 
+import com.globalweather.models.GlobalWeatherModel;
 import java.awt.Color;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 
 
@@ -34,7 +37,6 @@ public class GlobalWeather extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnHome = new javax.swing.JButton();
-        btnDeleteHome = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelHomePage = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -43,6 +45,7 @@ public class GlobalWeather extends javax.swing.JFrame {
         jComboBoxSearch = new javax.swing.JComboBox<>();
         btnSearch = new javax.swing.JButton();
         btnsort = new javax.swing.JButton();
+        btnDeleteHome = new javax.swing.JButton();
         jPanelModifyData = new javax.swing.JPanel();
         jTextFieldInsertCountry = new javax.swing.JTextField();
         jLabelInsertCountry = new javax.swing.JLabel();
@@ -55,9 +58,8 @@ public class GlobalWeather extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabelInsertPrecipitation = new javax.swing.JLabel();
         jLabelInsertSNo = new javax.swing.JLabel();
-        jTextFieldInsertSNo = new javax.swing.JTextField();
         jLabelInsertHumidity2 = new javax.swing.JLabel();
-        jTextFieldInsertHumidity1 = new javax.swing.JTextField();
+        jTextFieldInsertHumidity = new javax.swing.JTextField();
         jLabelInsertDewPoint1 = new javax.swing.JLabel();
         jTextFieldInsertVisibility = new javax.swing.JTextField();
         btnAddData = new javax.swing.JButton();
@@ -66,6 +68,7 @@ public class GlobalWeather extends javax.swing.JFrame {
         jTextFieldInsertWindSpeed = new javax.swing.JTextField();
         jLabelInsertVisibility1 = new javax.swing.JLabel();
         jTextFieldInsertprecipitation = new javax.swing.JTextField();
+        jSpinnerSno = new javax.swing.JSpinner();
         btnInsertDataHome = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -91,17 +94,6 @@ public class GlobalWeather extends javax.swing.JFrame {
             }
         });
 
-        btnDeleteHome.setBackground(new java.awt.Color(255, 51, 51));
-        btnDeleteHome.setFont(new java.awt.Font("MS Gothic", 1, 24)); // NOI18N
-        btnDeleteHome.setForeground(new java.awt.Color(255, 255, 255));
-        btnDeleteHome.setText("Delete");
-        btnDeleteHome.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        btnDeleteHome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDeleteHomeActionPerformed(evt);
-            }
-        });
-
         jPanelHomePage.setBackground(new java.awt.Color(9, 68, 121));
 
         jTable.setBackground(new java.awt.Color(9, 68, 121));
@@ -122,9 +114,16 @@ public class GlobalWeather extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Float.class, java.lang.Float.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jTable.setGridColor(new java.awt.Color(0, 0, 0));
@@ -135,10 +134,13 @@ public class GlobalWeather extends javax.swing.JFrame {
         jTable.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(jTable);
         if (jTable.getColumnModel().getColumnCount() > 0) {
-            jTable.getColumnModel().getColumn(3).setPreferredWidth(150);
-            jTable.getColumnModel().getColumn(4).setPreferredWidth(90);
-            jTable.getColumnModel().getColumn(7).setPreferredWidth(150);
-            jTable.getColumnModel().getColumn(8).setPreferredWidth(150);
+            jTable.getColumnModel().getColumn(3).setPreferredWidth(100);
+            jTable.getColumnModel().getColumn(4).setPreferredWidth(60);
+            jTable.getColumnModel().getColumn(6).setResizable(false);
+            jTable.getColumnModel().getColumn(7).setPreferredWidth(100);
+            jTable.getColumnModel().getColumn(8).setResizable(false);
+            jTable.getColumnModel().getColumn(8).setPreferredWidth(100);
+            jTable.getColumnModel().getColumn(9).setPreferredWidth(50);
         }
 
         jTextField1.setBackground(new java.awt.Color(255, 255, 255));
@@ -178,6 +180,17 @@ public class GlobalWeather extends javax.swing.JFrame {
             }
         });
 
+        btnDeleteHome.setBackground(new java.awt.Color(255, 51, 51));
+        btnDeleteHome.setFont(new java.awt.Font("MS Gothic", 1, 24)); // NOI18N
+        btnDeleteHome.setForeground(new java.awt.Color(255, 255, 255));
+        btnDeleteHome.setText("Delete");
+        btnDeleteHome.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        btnDeleteHome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDeleteHomeActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelHomePageLayout = new javax.swing.GroupLayout(jPanelHomePage);
         jPanelHomePage.setLayout(jPanelHomePageLayout);
         jPanelHomePageLayout.setHorizontalGroup(
@@ -196,6 +209,10 @@ public class GlobalWeather extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnsort, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelHomePageLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnDeleteHome, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(395, 395, 395))
         );
         jPanelHomePageLayout.setVerticalGroup(
             jPanelHomePageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,18 +225,14 @@ public class GlobalWeather extends javax.swing.JFrame {
                     .addComponent(btnsort, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(815, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(btnDeleteHome, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(741, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab1", jPanelHomePage);
 
         jPanelModifyData.setBackground(new java.awt.Color(9, 68, 121));
-
-        jTextFieldInsertCountry.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldInsertCountryActionPerformed(evt);
-            }
-        });
 
         jLabelInsertCountry.setFont(new java.awt.Font("MS Gothic", 1, 24)); // NOI18N
         jLabelInsertCountry.setForeground(new java.awt.Color(255, 255, 255));
@@ -229,31 +242,13 @@ public class GlobalWeather extends javax.swing.JFrame {
         jLabelInsertCity.setForeground(new java.awt.Color(255, 255, 255));
         jLabelInsertCity.setText("Name of the city ");
 
-        jTextFieldInsertCity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldInsertCityActionPerformed(evt);
-            }
-        });
-
         jLabelInsertTemperature.setFont(new java.awt.Font("MS Gothic", 1, 24)); // NOI18N
         jLabelInsertTemperature.setForeground(new java.awt.Color(255, 255, 255));
         jLabelInsertTemperature.setText("Temperature ");
 
-        jTextFieldInsertTemperature.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldInsertTemperatureActionPerformed(evt);
-            }
-        });
-
         jLabelInsertUVIndex.setFont(new java.awt.Font("MS Gothic", 1, 24)); // NOI18N
         jLabelInsertUVIndex.setForeground(new java.awt.Color(255, 255, 255));
         jLabelInsertUVIndex.setText("UV index");
-
-        jTextFieldInsertDewPoint.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldInsertDewPointActionPerformed(evt);
-            }
-        });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "low", "Moderate", "High", "Very High" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -270,31 +265,19 @@ public class GlobalWeather extends javax.swing.JFrame {
         jLabelInsertSNo.setForeground(new java.awt.Color(255, 255, 255));
         jLabelInsertSNo.setText("S.No");
 
-        jTextFieldInsertSNo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldInsertSNoActionPerformed(evt);
-            }
-        });
-
         jLabelInsertHumidity2.setFont(new java.awt.Font("MS Gothic", 1, 24)); // NOI18N
         jLabelInsertHumidity2.setForeground(new java.awt.Color(255, 255, 255));
         jLabelInsertHumidity2.setText("Humidity ");
 
-        jTextFieldInsertHumidity1.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldInsertHumidity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldInsertHumidity1ActionPerformed(evt);
+                jTextFieldInsertHumidityActionPerformed(evt);
             }
         });
 
         jLabelInsertDewPoint1.setFont(new java.awt.Font("MS Gothic", 1, 24)); // NOI18N
         jLabelInsertDewPoint1.setForeground(new java.awt.Color(255, 255, 255));
         jLabelInsertDewPoint1.setText("Dew point ");
-
-        jTextFieldInsertVisibility.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldInsertVisibilityActionPerformed(evt);
-            }
-        });
 
         btnAddData.setBackground(new java.awt.Color(18, 43, 114));
         btnAddData.setFont(new java.awt.Font("MS Gothic", 1, 24)); // NOI18N
@@ -322,21 +305,9 @@ public class GlobalWeather extends javax.swing.JFrame {
         jLabelInsertWindSpeed.setForeground(new java.awt.Color(255, 255, 255));
         jLabelInsertWindSpeed.setText("Wind Speed ");
 
-        jTextFieldInsertWindSpeed.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldInsertWindSpeedActionPerformed(evt);
-            }
-        });
-
         jLabelInsertVisibility1.setFont(new java.awt.Font("MS Gothic", 1, 24)); // NOI18N
         jLabelInsertVisibility1.setForeground(new java.awt.Color(255, 255, 255));
         jLabelInsertVisibility1.setText("Visibility");
-
-        jTextFieldInsertprecipitation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldInsertprecipitationActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanelModifyDataLayout = new javax.swing.GroupLayout(jPanelModifyData);
         jPanelModifyData.setLayout(jPanelModifyDataLayout);
@@ -347,90 +318,94 @@ public class GlobalWeather extends javax.swing.JFrame {
                     .addGroup(jPanelModifyDataLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanelModifyDataLayout.createSequentialGroup()
-                                    .addComponent(jLabelInsertCity, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldInsertCity, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanelModifyDataLayout.createSequentialGroup()
-                                    .addComponent(jLabelInsertWindSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jTextFieldInsertWindSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanelModifyDataLayout.createSequentialGroup()
-                                    .addGap(0, 0, Short.MAX_VALUE)
-                                    .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jTextFieldInsertSNo, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanelModifyDataLayout.createSequentialGroup()
-                                            .addComponent(jLabelInsertCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(jTextFieldInsertCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanelModifyDataLayout.createSequentialGroup()
-                                            .addComponent(jLabelInsertTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(80, 80, 80)
-                                            .addComponent(jTextFieldInsertTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                            .addComponent(jLabelInsertSNo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelModifyDataLayout.createSequentialGroup()
+                                .addComponent(jLabelInsertCity, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextFieldInsertCity, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelModifyDataLayout.createSequentialGroup()
+                                .addComponent(jLabelInsertWindSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jTextFieldInsertWindSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelModifyDataLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(jPanelModifyDataLayout.createSequentialGroup()
+                                        .addComponent(jLabelInsertTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(80, 80, 80)
+                                        .addComponent(jTextFieldInsertTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanelModifyDataLayout.createSequentialGroup()
+                                        .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelModifyDataLayout.createSequentialGroup()
+                                                .addComponent(jLabelInsertCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                            .addGroup(jPanelModifyDataLayout.createSequentialGroup()
+                                                .addComponent(jLabelInsertSNo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(175, 175, 175)))
+                                        .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(jTextFieldInsertCountry, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                                            .addComponent(jSpinnerSno))))))
                         .addGap(169, 169, 169))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelModifyDataLayout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnAddData, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(46, 46, 46)))
+                        .addGap(45, 45, 45)))
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelModifyDataLayout.createSequentialGroup()
+                    .addGroup(jPanelModifyDataLayout.createSequentialGroup()
                         .addComponent(jLabelInsertUVIndex, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(555, 555, 555))
                     .addGroup(jPanelModifyDataLayout.createSequentialGroup()
-                        .addComponent(jLabelInsertHumidity2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelModifyDataLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelModifyDataLayout.createSequentialGroup()
+                                .addComponent(jLabelInsertDewPoint1, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                                .addGap(71, 71, 71))
+                            .addGroup(jPanelModifyDataLayout.createSequentialGroup()
+                                .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabelInsertVisibility1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabelInsertHumidity2, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldInsertVisibility, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldInsertDewPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldInsertHumidity, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(534, 534, 534))
+                    .addGroup(jPanelModifyDataLayout.createSequentialGroup()
                         .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnModifyDataHome, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanelModifyDataLayout.createSequentialGroup()
-                                    .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanelModifyDataLayout.createSequentialGroup()
-                                            .addComponent(jLabelInsertDewPoint1, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                                            .addGap(71, 71, 71))
-                                        .addGroup(jPanelModifyDataLayout.createSequentialGroup()
-                                            .addComponent(jLabelInsertVisibility1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jTextFieldInsertVisibility, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextFieldInsertDewPoint, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jTextFieldInsertHumidity1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(534, 534, 534))
-                                .addGroup(jPanelModifyDataLayout.createSequentialGroup()
-                                    .addComponent(jLabelInsertPrecipitation)
-                                    .addGap(43, 43, 43)
-                                    .addComponent(jTextFieldInsertprecipitation, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
+                            .addGroup(jPanelModifyDataLayout.createSequentialGroup()
+                                .addComponent(jLabelInsertPrecipitation)
+                                .addGap(43, 43, 43)
+                                .addComponent(jTextFieldInsertprecipitation, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanelModifyDataLayout.setVerticalGroup(
             jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelModifyDataLayout.createSequentialGroup()
                 .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelModifyDataLayout.createSequentialGroup()
-                        .addGap(43, 43, 43)
-                        .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelInsertSNo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldInsertSNo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabelInsertHumidity2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextFieldInsertHumidity1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelModifyDataLayout.createSequentialGroup()
+                                .addGap(43, 43, 43)
+                                .addComponent(jLabelInsertSNo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(15, 15, 15))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelModifyDataLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jTextFieldInsertHumidity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)))
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanelModifyDataLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
+                        .addGap(46, 46, 46)
+                        .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSpinnerSno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabelInsertHumidity2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelInsertCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldInsertCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanelModifyDataLayout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldInsertCountry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabelInsertUVIndex, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
+                .addGap(22, 22, 22)
                 .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelInsertCity, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextFieldInsertCity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -438,32 +413,31 @@ public class GlobalWeather extends javax.swing.JFrame {
                     .addComponent(jLabelInsertDewPoint1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelModifyDataLayout.createSequentialGroup()
-                        .addGap(97, 97, 97)
-                        .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextFieldInsertprecipitation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldInsertWindSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanelModifyDataLayout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabelInsertTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldInsertTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabelInsertWindSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanelModifyDataLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelInsertVisibility1, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextFieldInsertVisibility, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addComponent(jLabelInsertPrecipitation, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelModifyDataLayout.createSequentialGroup()
                         .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelModifyDataLayout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(jLabelInsertPrecipitation, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelModifyDataLayout.createSequentialGroup()
-                                .addGap(114, 114, 114)
+                                .addGap(97, 97, 97)
                                 .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(btnAddData, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnModifyDataHome, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(742, Short.MAX_VALUE))
+                                    .addComponent(jTextFieldInsertprecipitation, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldInsertWindSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(jPanelModifyDataLayout.createSequentialGroup()
+                                .addGap(28, 28, 28)
+                                .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabelInsertTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jTextFieldInsertTemperature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabelInsertWindSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(63, 63, 63)
+                        .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAddData, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnModifyDataHome, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(718, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("tab3", jPanelModifyData);
@@ -497,9 +471,7 @@ public class GlobalWeather extends javax.swing.JFrame {
                 .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnInsertDataHome, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
-                .addComponent(btnDeleteHome, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(215, 215, 215))
+                .addGap(430, 430, 430))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -514,7 +486,6 @@ public class GlobalWeather extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnHome, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnDeleteHome, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnInsertDataHome, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1213, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -526,6 +497,20 @@ public class GlobalWeather extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnDeleteHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteHomeActionPerformed
+
+        
+      int result = JOptionPane.showConfirmDialog(jPanelHomePage,"Sure? You want to exit?", "Swing Tester",
+               JOptionPane.YES_NO_OPTION,
+               JOptionPane.QUESTION_MESSAGE);
+      if(result == JOptionPane.YES_OPTION){
+               int selectedRow = jTable.getSelectedRow();
+      DefaultTableModel tableModel = (DefaultTableModel)jTable.getModel();
+      
+      tableModel.removeRow(selectedRow);
+            }else if (result == JOptionPane.NO_OPTION){
+               
+            }
+     
        
     }//GEN-LAST:event_btnDeleteHomeActionPerformed
 
@@ -538,40 +523,54 @@ public class GlobalWeather extends javax.swing.JFrame {
         jTabbedPane1.setSelectedIndex(0);
     }//GEN-LAST:event_btnHomeActionPerformed
 
-    private void jTextFieldInsertCityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldInsertCityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldInsertCityActionPerformed
-
-    private void jTextFieldInsertCountryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldInsertCountryActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldInsertCountryActionPerformed
-
-    private void jTextFieldInsertTemperatureActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldInsertTemperatureActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldInsertTemperatureActionPerformed
-
-    private void jTextFieldInsertDewPointActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldInsertDewPointActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldInsertDewPointActionPerformed
-
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jTextFieldInsertSNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldInsertSNoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldInsertSNoActionPerformed
-
-    private void jTextFieldInsertHumidity1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldInsertHumidity1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldInsertHumidity1ActionPerformed
-
-    private void jTextFieldInsertVisibilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldInsertVisibilityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldInsertVisibilityActionPerformed
-
     private void btnAddDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDataActionPerformed
-        // TODO add your handling code here:
+     
+       
+       
+        if(jTextFieldInsertCountry.getText().isEmpty() && jTextFieldInsertCity.getText().isEmpty()&&jTextFieldInsertTemperature.getText().isEmpty() &&jTextFieldInsertWindSpeed.getText().isEmpty()
+           &&jTextFieldInsertHumidity.getText().isEmpty()&& jTextFieldInsertVisibility.getText().isEmpty()&&jTextFieldInsertprecipitation.getText().isEmpty()&&jTextFieldInsertVisibility.getText().isEmpty()){
+        
+            JOptionPane.showMessageDialog(this, "please enter all value ");   
+        }
+        int sno = Integer.parseInt(jSpinnerSno.getValue().toString());
+        String country = jTextFieldInsertCountry.getText();
+        String city = jTextFieldInsertCity.getText();
+        float temperature = Float.parseFloat(jTextFieldInsertTemperature.getText());
+        float windspeed = Float.parseFloat(jTextFieldInsertWindSpeed.getText());
+        float humidity = Float.parseFloat(jTextFieldInsertHumidity.getText());
+        float dewpoint = Float.parseFloat(jTextFieldInsertVisibility.getText());
+        String uvindex=jComboBox1.getSelectedItem().toString();
+        float precipitation = Float.parseFloat(jTextFieldInsertprecipitation.getText());
+        float visibility = Float.parseFloat(jTextFieldInsertVisibility.getText());
+        
+        
+        
+         
+         GlobalWeatherModel weatherModel = new GlobalWeatherModel(sno, country, city, uvindex,
+                temperature, humidity, visibility, windspeed,dewpoint,precipitation);
+        // Add data to the table
+       DefaultTableModel tableModel = (DefaultTableModel)jTable.getModel();
+        Object[] rowData = {weatherModel.getSno(), weatherModel.getCountryName(), weatherModel.getCityName(),
+                weatherModel.getTemperature(), weatherModel.getHumidity(), weatherModel.getUvIndex(),
+                weatherModel.getVisibility(), weatherModel.getWindSpeed(), weatherModel.getPrecipitation(),
+                weatherModel.getDewPoint()};
+        tableModel.addRow(rowData);
+         JOptionPane.showMessageDialog(this, "data added sucessfully ");  
+         
+        
+
+//        table
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_btnAddDataActionPerformed
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
@@ -594,13 +593,13 @@ public class GlobalWeather extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnModifyDataHomeActionPerformed
 
-    private void jTextFieldInsertWindSpeedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldInsertWindSpeedActionPerformed
+    private void jTextFieldInsertHumidityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldInsertHumidityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldInsertWindSpeedActionPerformed
+    }//GEN-LAST:event_jTextFieldInsertHumidityActionPerformed
 
-    private void jTextFieldInsertprecipitationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldInsertprecipitationActionPerformed
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldInsertprecipitationActionPerformed
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
  
     public static void main(String args[]) {
@@ -634,6 +633,7 @@ public class GlobalWeather extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddData;
@@ -661,14 +661,14 @@ public class GlobalWeather extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelHomePage;
     private javax.swing.JPanel jPanelModifyData;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSpinner jSpinnerSno;
     private javax.swing.JTabbedPane jTabbedPane1;
     public javax.swing.JTable jTable;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldInsertCity;
     private javax.swing.JTextField jTextFieldInsertCountry;
     private javax.swing.JTextField jTextFieldInsertDewPoint;
-    private javax.swing.JTextField jTextFieldInsertHumidity1;
-    private javax.swing.JTextField jTextFieldInsertSNo;
+    private javax.swing.JTextField jTextFieldInsertHumidity;
     private javax.swing.JTextField jTextFieldInsertTemperature;
     private javax.swing.JTextField jTextFieldInsertVisibility;
     private javax.swing.JTextField jTextFieldInsertWindSpeed;
