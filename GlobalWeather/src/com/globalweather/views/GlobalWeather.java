@@ -9,11 +9,6 @@ import java.awt.Color;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
-
-
-
-
 /**
  *
  * @author LENOVO
@@ -25,10 +20,9 @@ public class GlobalWeather extends javax.swing.JFrame {
      */
     public GlobalWeather() {
         initComponents();
-       jTable.getTableHeader().setBackground(Color.red);
+        jTable.getTableHeader().setBackground(Color.red);
     }
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -498,20 +492,19 @@ public class GlobalWeather extends javax.swing.JFrame {
 
     private void btnDeleteHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteHomeActionPerformed
 
-        
-      int result = JOptionPane.showConfirmDialog(jPanelHomePage,"Sure? You want to exit?", "Swing Tester",
-               JOptionPane.YES_NO_OPTION,
-               JOptionPane.QUESTION_MESSAGE);
-      if(result == JOptionPane.YES_OPTION){
-               int selectedRow = jTable.getSelectedRow();
-      DefaultTableModel tableModel = (DefaultTableModel)jTable.getModel();
-      
-      tableModel.removeRow(selectedRow);
-            }else if (result == JOptionPane.NO_OPTION){
-               
-            }
-     
-       
+        int result = JOptionPane.showConfirmDialog(null, "Sure? You want to exit?", "Swing Tester",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE);
+        if (result == JOptionPane.YES_OPTION) {
+            int selectedRow = jTable.getSelectedRow();
+            DefaultTableModel tableModel = (DefaultTableModel) jTable.getModel();
+
+            tableModel.removeRow(selectedRow);
+        } else if (result == JOptionPane.NO_OPTION) {
+
+        }
+
+
     }//GEN-LAST:event_btnDeleteHomeActionPerformed
 
     private void btnInsertDataHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertDataHomeActionPerformed
@@ -524,13 +517,9 @@ public class GlobalWeather extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHomeActionPerformed
 
     private void btnAddDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDataActionPerformed
-     
-       
-       
-        if(jTextFieldInsertCountry.getText().isEmpty() && jTextFieldInsertCity.getText().isEmpty()&&jTextFieldInsertTemperature.getText().isEmpty() &&jTextFieldInsertWindSpeed.getText().isEmpty()
-           &&jTextFieldInsertHumidity.getText().isEmpty()&& jTextFieldInsertVisibility.getText().isEmpty()&&jTextFieldInsertprecipitation.getText().isEmpty()&&jTextFieldInsertVisibility.getText().isEmpty()){
-        
-            JOptionPane.showMessageDialog(this, "please enter all value ");   
+
+        if (isTextFieldEmpty()){
+            JOptionPane.showMessageDialog(this, "please enter all value ");
         }
         int sno = Integer.parseInt(jSpinnerSno.getValue().toString());
         String country = jTextFieldInsertCountry.getText();
@@ -539,40 +528,31 @@ public class GlobalWeather extends javax.swing.JFrame {
         float windspeed = Float.parseFloat(jTextFieldInsertWindSpeed.getText());
         float humidity = Float.parseFloat(jTextFieldInsertHumidity.getText());
         float dewpoint = Float.parseFloat(jTextFieldInsertVisibility.getText());
-        String uvindex=jComboBox1.getSelectedItem().toString();
+        String uvindex = jComboBox1.getSelectedItem().toString();
         float precipitation = Float.parseFloat(jTextFieldInsertprecipitation.getText());
         float visibility = Float.parseFloat(jTextFieldInsertVisibility.getText());
-        
-        
-        
-         
-         GlobalWeatherModel weatherModel = new GlobalWeatherModel(sno, country, city, uvindex,
-                temperature, humidity, visibility, windspeed,dewpoint,precipitation);
+
+        GlobalWeatherModel weatherModel = new GlobalWeatherModel(sno, country, city, uvindex,
+                temperature, humidity, visibility, windspeed, dewpoint, precipitation);
         // Add data to the table
-       DefaultTableModel tableModel = (DefaultTableModel)jTable.getModel();
+        DefaultTableModel tableModel = (DefaultTableModel) jTable.getModel();
         Object[] rowData = {weatherModel.getSno(), weatherModel.getCountryName(), weatherModel.getCityName(),
-                weatherModel.getTemperature(), weatherModel.getHumidity(), weatherModel.getUvIndex(),
-                weatherModel.getVisibility(), weatherModel.getWindSpeed(), weatherModel.getPrecipitation(),
-                weatherModel.getDewPoint()};
+                        weatherModel.getTemperature(), weatherModel.getHumidity(), weatherModel.getUvIndex(),
+                        weatherModel.getVisibility(), weatherModel.getWindSpeed(), weatherModel.getPrecipitation(),
+                        weatherModel.getDewPoint()};
         tableModel.addRow(rowData);
-         JOptionPane.showMessageDialog(this, "data added sucessfully ");  
-         
-        
+        JOptionPane.showMessageDialog(this, "data added sucessfully ");
 
 //        table
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
     }//GEN-LAST:event_btnAddDataActionPerformed
 
+    private boolean isTextFieldEmpty(){
+    return jTextFieldInsertCountry.getText().isEmpty() || jTextFieldInsertCity.getText().isEmpty() || jTextFieldInsertTemperature.getText().isEmpty() || jTextFieldInsertWindSpeed.getText().isEmpty()
+                || jTextFieldInsertHumidity.getText().isEmpty() || jTextFieldInsertVisibility.getText().isEmpty() || jTextFieldInsertprecipitation.getText().isEmpty() || jTextFieldInsertVisibility.getText().isEmpty(); 
+
+    }
+    
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSearchActionPerformed
@@ -601,7 +581,6 @@ public class GlobalWeather extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
- 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -633,7 +612,7 @@ public class GlobalWeather extends javax.swing.JFrame {
             }
         });
     }
-    
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddData;

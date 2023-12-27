@@ -14,6 +14,19 @@ public class GlobalWeatherModel {
     // declaration of global variable 
     private float temperature , humidity,visibility, windSpeed, dewPoint , precipitation  ;
 
+    /**
+     * Constructor of GlobalWeatherModel class 
+     * @param sno
+     * @param countryName
+     * @param cityName
+     * @param uvIndex
+     * @param temperature
+     * @param humidity
+     * @param visibility
+     * @param windSpeed
+     * @param dewPoint
+     * @param precipitation
+     */
     public GlobalWeatherModel(int sno, String countryName, String cityName, String uvIndex, float temperature, float humidity, float visibility, float windSpeed, float dewPoint, float precipitation) {
         this.sno = sno;
         this.countryName = countryName;
@@ -28,104 +41,177 @@ public class GlobalWeatherModel {
     }
     
    
-    // Constructor of GlobalWeatherModel class 
+   
+
     
- public GlobalWeatherModel() {
-        // You can initialize default values or leave it empty
-    }
+    
+    
+    /**
+     *Gets the serial number of the current object 
+     * @return the current value of the sno attribute
+     */
     public int getSno() {
         return sno;
     }
     
-     // getter method for temperature variable 
+ 
+
+    /**
+     * Getter method for temperature attribute
+     * @return current value of temperature attribute
+     */
     public float getTemperature() {
         return temperature;
     }
     
-    // getter method forhumidity variable 
+    /**
+     * Getter method for humidity attributes 
+     * @return current value of humidity attributes
+     */
     public float getHumidity() {
         return humidity;
     }
     
-    // getter method for pressure variable 
-    
-    
-    // getter method for visibility variable 
+    /**
+     *Getter method for visibility attributes 
+     * @return current value of visibility attributes
+     */
     public float getVisibility() {
         return visibility;
     }
     
-    // getter method for windSpeed variable 
+
+
+    /**
+     *getter method for windSpeed variable 
+     * @return
+     */
     public float getWindSpeed() {
         return windSpeed;
     }
     
-    // getter method for dewPoint variable 
+    /**
+     *
+     * @return
+     */
     public float getDewPoint() {
         return dewPoint;
     }
     
-    // getter method for precipitation variable 
+    /**
+     *
+     * @return
+     */
     public float getPrecipitation() {
         return precipitation;
     }
     
-     // getter method for countryName  variable 
+    /**
+     *
+     * @return
+     */
     public String getCountryName() {
         return countryName;
     }
     
-    // getter method for cityName variable 
+    /**
+     *
+     * @return
+     */
     public String getCityName() {
         return cityName;
     }
     
-    // getter method for uvIndex variable 
+    /**
+     *
+     * @return
+     */
     public String getUvIndex() {
         return uvIndex;
     }
     
-     public void setSno(int sno) {
+    /**
+     *
+     * @param sno
+     */
+    public void setSno(int sno) {
         this.sno = sno;
     }
-    // setter  method of temperature variable 
+    
+
+    /**
+     *
+     * @param temperature
+     */
     public void setTemperature(float temperature) {
         this.temperature = temperature;
     }
     
-    // setter  method of humidity  variable 
+    
+
+    /**
+     *
+     * @param humidity
+     */
     public void setHumidity(float humidity) {
         this.humidity = humidity;
     }
 
-    // setter  method of pressure variable 
-   
+    
 
-    // setter  method of visibility variable 
+    /**
+     *
+     * @param visibility
+     */
     public void setVisibility(float visibility) {
         this.visibility = visibility;
     }
 
+    /**
+     *
+     * @param windSpeed
+     */
     public void setWindSpeed(float windSpeed) {
         this.windSpeed = windSpeed;
     }
 
+    /**
+     *
+     * @param dewPoint
+     */
     public void setDewPoint(float dewPoint) {
         this.dewPoint = dewPoint;
     }
 
+    /**
+     *
+     * @param precipitation
+     */
     public void setPrecipitation(float precipitation) {
         this.precipitation = precipitation;
     }
 
+    /**
+     *
+     * @param countryName
+     */
     public void setCountryName(String countryName) {
         this.countryName = countryName;
     }
 
+    /**
+     *
+     * @param cityName
+     */
     public void setCityName(String cityName) {
         this.cityName = cityName;
     }
 
+    
+    /**
+     *
+     * @param uvIndex
+     */
     public void setUvIndex(String uvIndex) {
         this.uvIndex = uvIndex;
     }
