@@ -10,9 +10,9 @@ package com.globalweather.models;
  */
 public class GlobalWeatherModel {
      private int sno;
-     private String countryName, cityName,uvIndex; 
+     private String countryName, cityName,uvIndex,visibility; 
     // declaration of global variable 
-    private float temperature , humidity,visibility, windSpeed, dewPoint , precipitation  ;
+    private float temperature , humidity, windSpeed, dewPoint , precipitation  ;
 
     /**
      * Constructor of GlobalWeatherModel class 
@@ -27,7 +27,7 @@ public class GlobalWeatherModel {
      * @param dewPoint
      * @param precipitation
      */
-    public GlobalWeatherModel(int sno, String countryName, String cityName, String uvIndex, float temperature, float humidity, float visibility, float windSpeed, float dewPoint, float precipitation) {
+    public GlobalWeatherModel(int sno, String countryName, String cityName, String uvIndex, float temperature, float humidity, String visibility, float windSpeed, float dewPoint, float precipitation) {
         this.sno = sno;
         this.countryName = countryName;
         this.cityName = cityName;
@@ -76,7 +76,7 @@ public class GlobalWeatherModel {
      *Getter method for visibility attributes 
      * @return current value of visibility attributes
      */
-    public float getVisibility() {
+    public String getVisibility() {
         return visibility;
     }
     
@@ -163,7 +163,7 @@ public class GlobalWeatherModel {
      *
      * @param visibility
      */
-    public void setVisibility(float visibility) {
+    public void setVisibility(String visibility) {
         this.visibility = visibility;
     }
 
