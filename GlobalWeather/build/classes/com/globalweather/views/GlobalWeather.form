@@ -360,9 +360,6 @@
                 </Container>
                 <Component class="javax.swing.JTextField" name="jTextField1">
                   <Properties>
-                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
-                    </Property>
                     <Property name="text" type="java.lang.String" value="Search"/>
                   </Properties>
                   <Events>
@@ -479,7 +476,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="28" max="32767" attributes="0"/>
+                          <EmptySpace pref="30" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabelInsertWindSpeed" min="-2" pref="194" max="-2" attributes="0"/>
@@ -519,7 +516,7 @@
                                   <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="jLabelInsertDewPoint1" pref="148" max="32767" attributes="0"/>
+                                          <Component id="jLabelInsertDewPoint1" pref="150" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
@@ -575,7 +572,10 @@
                                   <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="jSpinnerSno" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabelInsertHumidity2" min="-2" pref="43" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="3" attributes="0">
+                                          <Component id="jLabelInsertHumidity2" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                          <Component id="jTextFieldInsertHumidity" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -628,18 +628,10 @@
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                          <Component id="jLabelInsertSNo" min="-2" pref="43" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" attributes="0">
-                                          <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                                          <Component id="jTextFieldInsertHumidity" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jComboBox1" min="-2" pref="39" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                  <Component id="jLabelInsertSNo" min="-2" pref="43" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                  <Component id="jComboBox1" min="-2" pref="33" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="-2" pref="738" max="-2" attributes="0"/>
@@ -676,6 +668,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextFieldInsertCity">
+                  <Events>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldInsertCityKeyPressed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabelInsertTemperature">
                   <Properties>
@@ -705,6 +700,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextFieldInsertDewPoint">
+                  <Events>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldInsertDewPointKeyPressed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JComboBox" name="jComboBox1">
                   <Properties>
@@ -759,7 +757,7 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextFieldInsertHumidity">
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldInsertHumidityActionPerformed"/>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldInsertHumidityKeyPressed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabelInsertDewPoint1">
@@ -829,6 +827,9 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="jTextFieldInsertWindSpeed">
+                  <Events>
+                    <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldInsertWindSpeedKeyPressed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabelInsertVisibility1">
                   <Properties>
@@ -844,6 +845,9 @@
                 <Component class="javax.swing.JTextField" name="jTextFieldInsertprecipitation">
                 </Component>
                 <Component class="javax.swing.JSpinner" name="jSpinnerSno">
+                  <Properties>
+                    <Property name="name" type="java.lang.String" value="" noResource="true"/>
+                  </Properties>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="jRadioButtonPoor">
                   <Properties>
@@ -872,9 +876,6 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Excellent"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonExcellentActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="jRadioButtonModerate">
                   <Properties>
@@ -889,9 +890,6 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Moderate "/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonModerateActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="jRadioButtonClear">
                   <Properties>
@@ -906,9 +904,6 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Clear"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButtonClearActionPerformed"/>
-                  </Events>
                 </Component>
               </SubComponents>
             </Container>
