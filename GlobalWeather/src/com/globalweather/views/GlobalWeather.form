@@ -211,14 +211,14 @@
                         </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="10" rowCount="5">
-                            <Column editable="true" title="S.No" type="java.lang.Integer">
+                            <Column editable="false" title="S.No" type="java.lang.Integer">
                               <Data value="1"/>
                               <Data value="2"/>
                               <Data value="3"/>
                               <Data value="4"/>
                               <Data value="5"/>
                             </Column>
-                            <Column editable="true" title="Country " type="java.lang.Object">
+                            <Column editable="false" title="Country " type="java.lang.Object">
                               <Data value="USA"/>
                               <Data value="Nepal"/>
                               <Data value="Netherland"/>
@@ -232,14 +232,14 @@
                               <Data value="Shanghai"/>
                               <Data value="Mumbai"/>
                             </Column>
-                            <Column editable="true" title="Temperature &#xb0;C  " type="java.lang.Float">
+                            <Column editable="false" title="Temperature &#xb0;C  " type="java.lang.Float">
                               <Data value="14.0"/>
                               <Data value="12.0"/>
                               <Data value="10.0"/>
                               <Data value="14.0"/>
                               <Data value="29.0"/>
                             </Column>
-                            <Column editable="true" title="Humidity (%)" type="java.lang.Float">
+                            <Column editable="false" title="Humidity (%)" type="java.lang.Float">
                               <Data value="80.0"/>
                               <Data value="53.0"/>
                               <Data value="87.0"/>
@@ -248,33 +248,33 @@
                             </Column>
                             <Column editable="true" title="UV index " type="java.lang.String">
                               <Data value="Low"/>
-                              <Data value=""/>
-                              <Data value="null"/>
-                              <Data value="null"/>
+                              <Data value="High"/>
+                              <Data value="Moderate"/>
+                              <Data value="Very High"/>
                               <Data value="null"/>
                             </Column>
-                            <Column editable="true" title="Visibility  (km)" type="java.lang.Object">
+                            <Column editable="false" title="Visibility  (km)" type="java.lang.Object">
                               <Data value="16.1"/>
                               <Data value="8"/>
                               <Data value="16.1"/>
                               <Data value="6.4"/>
                               <Data value="1.6"/>
                             </Column>
-                            <Column editable="true" title="Wind Speed  km/h" type="java.lang.Object">
+                            <Column editable="false" title="Wind Speed  km/h" type="java.lang.Object">
                               <Data value="14"/>
                               <Data value="10"/>
                               <Data value="27.8"/>
                               <Data value="18"/>
                               <Data value="11"/>
                             </Column>
-                            <Column editable="true" title="Precipitation (mm)" type="java.lang.Object">
+                            <Column editable="false" title="Precipitation (mm)" type="java.lang.Object">
                               <Data value="12"/>
                               <Data value="2"/>
                               <Data value="18"/>
                               <Data value="5"/>
                               <Data value="1"/>
                             </Column>
-                            <Column editable="true" title="Dew point" type="java.lang.Object">
+                            <Column editable="false" title="Dew point" type="java.lang.Object">
                               <Data value="11"/>
                               <Data value="10"/>
                               <Data value="7"/>
@@ -352,6 +352,9 @@
                           <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jTableMouseClicked"/>
+                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                       </AuxValues>
@@ -476,7 +479,7 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace pref="30" max="32767" attributes="0"/>
+                          <EmptySpace pref="28" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabelInsertWindSpeed" min="-2" pref="194" max="-2" attributes="0"/>
@@ -494,14 +497,14 @@
                                   <Component id="jTextFieldInsertCity" min="-2" pref="167" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jLabelInsertCountry" min="-2" pref="288" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Group type="102" attributes="0">
                                           <Component id="jLabelInsertSNo" min="-2" pref="125" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="175" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Component id="jLabelInsertCountry" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -516,7 +519,7 @@
                                   <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="jLabelInsertDewPoint1" pref="150" max="32767" attributes="0"/>
+                                          <Component id="jLabelInsertDewPoint1" pref="148" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
@@ -569,19 +572,27 @@
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jSpinnerSno" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="3" attributes="0">
-                                          <Component id="jLabelInsertHumidity2" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                                          <Component id="jTextFieldInsertHumidity" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabelInsertHumidity2" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldInsertHumidity" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jTextFieldInsertCountry" alignment="3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabelInsertUVIndex" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                              <Component id="jLabelInsertCountry" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                  </Group>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabelInsertCountry" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                                      <Component id="jTextFieldInsertCountry" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabelInsertUVIndex" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabelInsertSNo" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                              <Component id="jSpinnerSno" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
@@ -591,18 +602,6 @@
                                       <Component id="jLabelInsertDewPoint1" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabelInsertTemperature" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                                              <Component id="jTextFieldInsertTemperature" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="jLabelInsertWindSpeed" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                                              <Component id="jTextFieldInsertWindSpeed" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                      </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
@@ -625,12 +624,22 @@
                                               <Component id="btnAddData" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabelInsertTemperature" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldInsertTemperature" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="3" attributes="0">
+                                              <Component id="jLabelInsertWindSpeed" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                                              <Component id="jTextFieldInsertWindSpeed" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                                  <Component id="jLabelInsertSNo" min="-2" pref="43" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
                                   <Component id="jComboBox1" min="-2" pref="33" max="-2" attributes="0"/>
                               </Group>
                           </Group>
