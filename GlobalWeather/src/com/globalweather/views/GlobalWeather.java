@@ -150,7 +150,6 @@ public class GlobalWeather extends javax.swing.JFrame {
             jTable.getColumnModel().getColumn(9).setPreferredWidth(50);
         }
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
         jTextField1.setText("Search");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -253,6 +252,12 @@ public class GlobalWeather extends javax.swing.JFrame {
         jLabelInsertCity.setForeground(new java.awt.Color(255, 255, 255));
         jLabelInsertCity.setText("Name of the city ");
 
+        jTextFieldInsertCity.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldInsertCityKeyPressed(evt);
+            }
+        });
+
         jLabelInsertTemperature.setFont(new java.awt.Font("MS Gothic", 1, 24)); // NOI18N
         jLabelInsertTemperature.setForeground(new java.awt.Color(255, 255, 255));
         jLabelInsertTemperature.setText("Temperature ");
@@ -266,6 +271,12 @@ public class GlobalWeather extends javax.swing.JFrame {
         jLabelInsertUVIndex.setFont(new java.awt.Font("MS Gothic", 1, 24)); // NOI18N
         jLabelInsertUVIndex.setForeground(new java.awt.Color(255, 255, 255));
         jLabelInsertUVIndex.setText("UV index");
+
+        jTextFieldInsertDewPoint.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldInsertDewPointKeyPressed(evt);
+            }
+        });
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Low", "Moderate", "High", "Very High" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -286,9 +297,9 @@ public class GlobalWeather extends javax.swing.JFrame {
         jLabelInsertHumidity2.setForeground(new java.awt.Color(255, 255, 255));
         jLabelInsertHumidity2.setText("Humidity ");
 
-        jTextFieldInsertHumidity.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldInsertHumidityActionPerformed(evt);
+        jTextFieldInsertHumidity.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldInsertHumidityKeyPressed(evt);
             }
         });
 
@@ -322,9 +333,17 @@ public class GlobalWeather extends javax.swing.JFrame {
         jLabelInsertWindSpeed.setForeground(new java.awt.Color(255, 255, 255));
         jLabelInsertWindSpeed.setText("Wind Speed ");
 
+        jTextFieldInsertWindSpeed.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldInsertWindSpeedKeyPressed(evt);
+            }
+        });
+
         jLabelInsertVisibility1.setFont(new java.awt.Font("MS Gothic", 1, 24)); // NOI18N
         jLabelInsertVisibility1.setForeground(new java.awt.Color(255, 255, 255));
         jLabelInsertVisibility1.setText("Visibility");
+
+        jSpinnerSno.setName(""); // NOI18N
 
         buttonGroupVisibility.add(jRadioButtonPoor);
         jRadioButtonPoor.setFont(new java.awt.Font("MS Gothic", 1, 14)); // NOI18N
@@ -335,38 +354,23 @@ public class GlobalWeather extends javax.swing.JFrame {
         jRadioButtonExcellent.setFont(new java.awt.Font("MS Gothic", 1, 14)); // NOI18N
         jRadioButtonExcellent.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonExcellent.setText("Excellent");
-        jRadioButtonExcellent.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonExcellentActionPerformed(evt);
-            }
-        });
 
         buttonGroupVisibility.add(jRadioButtonModerate);
         jRadioButtonModerate.setFont(new java.awt.Font("MS Gothic", 1, 14)); // NOI18N
         jRadioButtonModerate.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonModerate.setText("Moderate ");
-        jRadioButtonModerate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonModerateActionPerformed(evt);
-            }
-        });
 
         buttonGroupVisibility.add(jRadioButtonClear);
         jRadioButtonClear.setFont(new java.awt.Font("MS Gothic", 1, 14)); // NOI18N
         jRadioButtonClear.setForeground(new java.awt.Color(255, 255, 255));
         jRadioButtonClear.setText("Clear");
-        jRadioButtonClear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButtonClearActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanelModifyDataLayout = new javax.swing.GroupLayout(jPanelModifyData);
         jPanelModifyData.setLayout(jPanelModifyDataLayout);
         jPanelModifyDataLayout.setHorizontalGroup(
             jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelModifyDataLayout.createSequentialGroup()
-                .addContainerGap(28, Short.MAX_VALUE)
+                .addContainerGap(30, Short.MAX_VALUE)
                 .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelModifyDataLayout.createSequentialGroup()
                         .addComponent(jLabelInsertWindSpeed, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -397,7 +401,7 @@ public class GlobalWeather extends javax.swing.JFrame {
                         .addGap(19, 19, 19)
                         .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelModifyDataLayout.createSequentialGroup()
-                                .addComponent(jLabelInsertDewPoint1, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+                                .addComponent(jLabelInsertDewPoint1, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                                 .addGap(71, 71, 71))
                             .addGroup(jPanelModifyDataLayout.createSequentialGroup()
                                 .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -438,7 +442,9 @@ public class GlobalWeather extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jSpinnerSno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabelInsertHumidity2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabelInsertHumidity2, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextFieldInsertHumidity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabelInsertCountry, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -479,15 +485,10 @@ public class GlobalWeather extends javax.swing.JFrame {
                                     .addComponent(btnModifyDataHome, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(btnAddData, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanelModifyDataLayout.createSequentialGroup()
-                        .addGroup(jPanelModifyDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelModifyDataLayout.createSequentialGroup()
-                                .addGap(43, 43, 43)
-                                .addComponent(jLabelInsertSNo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelModifyDataLayout.createSequentialGroup()
-                                .addGap(73, 73, 73)
-                                .addComponent(jTextFieldInsertHumidity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(43, 43, 43)
+                        .addComponent(jLabelInsertSNo, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(23, 23, 23)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(738, 738, 738))
         );
 
@@ -666,25 +667,9 @@ public class GlobalWeather extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnModifyDataHomeActionPerformed
 
-    private void jTextFieldInsertHumidityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldInsertHumidityActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldInsertHumidityActionPerformed
-
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
-
-    private void jRadioButtonClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonClearActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonClearActionPerformed
-
-    private void jRadioButtonModerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonModerateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonModerateActionPerformed
-
-    private void jRadioButtonExcellentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButtonExcellentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButtonExcellentActionPerformed
 
     private void jTextFieldInsertTemperatureKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldInsertTemperatureKeyPressed
         char c = evt.getKeyChar();
@@ -696,27 +681,74 @@ public class GlobalWeather extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "please enter numbers only");
             jTextFieldInsertTemperature.setText(""  );
             jTextFieldInsertTemperature.setEditable(false);
-            
-            
-        }
+        }    
     }//GEN-LAST:event_jTextFieldInsertTemperatureKeyPressed
 
-    private void jTextFieldInsertCountryKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldInsertCountryKeyPressed
-          char c = evt.getKeyChar();
+    private void jTextFieldInsertWindSpeedKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldInsertWindSpeedKeyPressed
+        char c = evt.getKeyChar();
         if(Character.isDigit(c) ||c == KeyEvent.VK_BACK_SPACE || c == '.'){
-          jTextFieldInsertCountry.setEditable(true);
+            jTextFieldInsertWindSpeed.setEditable(true);
+           
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "please enter numbers only");
+            jTextFieldInsertWindSpeed.setText(""  );
+            jTextFieldInsertWindSpeed.setEditable(false);
+        }    
+    }//GEN-LAST:event_jTextFieldInsertWindSpeedKeyPressed
+
+    private void jTextFieldInsertHumidityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldInsertHumidityKeyPressed
+         char c = evt.getKeyChar();
+        if(Character.isDigit(c) ||c == KeyEvent.VK_BACK_SPACE || c == '.'){
+            jTextFieldInsertHumidity.setEditable(true);
+           
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "please enter numbers only");
+            jTextFieldInsertHumidity.setText(""  );
+            jTextFieldInsertHumidity.setEditable(false);
+        } 
+    }//GEN-LAST:event_jTextFieldInsertHumidityKeyPressed
+
+    private void jTextFieldInsertDewPointKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldInsertDewPointKeyPressed
+         char c = evt.getKeyChar();
+        if(Character.isDigit(c) ||c == KeyEvent.VK_BACK_SPACE || c == '.'){
+            jTextFieldInsertDewPoint.setEditable(true);
+           
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "please enter numbers only");
+            jTextFieldInsertDewPoint.setText(""  );
+            jTextFieldInsertDewPoint.setEditable(false);
+        } 
+    }//GEN-LAST:event_jTextFieldInsertDewPointKeyPressed
+
+    private void jTextFieldInsertCountryKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldInsertCountryKeyPressed
+        char c = (char) evt.getKeyCode();
+        if(Character.isAlphabetic(c) ||c == KeyEvent.VK_BACK_SPACE || c == '.'||c == KeyEvent.VK_SHIFT || c == KeyEvent.VK_SPACE ){
+            jTextFieldInsertCountry.setEditable(true);
            
         }
         else{
             JOptionPane.showMessageDialog(this, "please enter numbers only");
             jTextFieldInsertCountry.setText(""  );
             jTextFieldInsertCountry.setEditable(false);
-            
-            
-        }
-    }   
+        } 
     }//GEN-LAST:event_jTextFieldInsertCountryKeyPressed
 
+    private void jTextFieldInsertCityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldInsertCityKeyPressed
+        char c = (char) evt.getKeyCode();
+        if(Character.isAlphabetic(c) ||c == KeyEvent.VK_BACK_SPACE || c == '.'||c == KeyEvent.VK_SHIFT || c == KeyEvent.VK_SPACE ){
+            jTextFieldInsertCity.setEditable(true);
+           
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "please enter numbers only");
+            jTextFieldInsertCity.setText(""  );
+            jTextFieldInsertCity.setEditable(false);
+        } 
+    }//GEN-LAST:event_jTextFieldInsertCityKeyPressed
+   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -795,7 +827,5 @@ public class GlobalWeather extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldInsertprecipitation;
     // End of variables declaration//GEN-END:variables
 
-    private String To_string(String actionCommand) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+   
 }
