@@ -156,8 +156,10 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnSearch" min="-2" pref="112" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="293" max="-2" attributes="0"/>
-                          <Component id="jComboBoxSearch" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jComboBoxSortyBy" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="jComboBoxSortingOrder" min="-2" pref="120" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="btnsort" min="-2" pref="106" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -178,7 +180,8 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="btnSearch" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
                               <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jComboBoxSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxSortyBy" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jComboBoxSortingOrder" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnsort" alignment="3" min="-2" pref="34" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
@@ -218,16 +221,16 @@
                               <Data value="4"/>
                               <Data value="5"/>
                             </Column>
-                            <Column editable="false" title="Country " type="java.lang.Object">
+                            <Column editable="true" title="Country " type="java.lang.String">
                               <Data value="USA"/>
                               <Data value="Nepal"/>
                               <Data value="Netherland"/>
-                              <Data value="China "/>
+                              <Data value="China"/>
                               <Data value="India"/>
                             </Column>
-                            <Column editable="false" title="City " type="java.lang.Object">
+                            <Column editable="true" title="City " type="java.lang.String">
                               <Data value="New York"/>
-                              <Data value="Kathmandu "/>
+                              <Data value="Kathmaandu"/>
                               <Data value="Amsterdam"/>
                               <Data value="Shanghai"/>
                               <Data value="Mumbai"/>
@@ -251,51 +254,51 @@
                               <Data value="High"/>
                               <Data value="Moderate"/>
                               <Data value="Very High"/>
-                              <Data value="null"/>
+                              <Data value="Low"/>
                             </Column>
-                            <Column editable="false" title="Visibility  (km)" type="java.lang.Object">
-                              <Data value="16.1"/>
-                              <Data value="8"/>
-                              <Data value="16.1"/>
-                              <Data value="6.4"/>
-                              <Data value="1.6"/>
+                            <Column editable="true" title="Visibility  (km)" type="java.lang.String">
+                              <Data value="Poor"/>
+                              <Data value="Moderate"/>
+                              <Data value="Clear"/>
+                              <Data value="Poor"/>
+                              <Data value="Clear"/>
                             </Column>
-                            <Column editable="false" title="Wind Speed  km/h" type="java.lang.Object">
-                              <Data value="14"/>
-                              <Data value="10"/>
-                              <Data value="27.8"/>
-                              <Data value="18"/>
-                              <Data value="11"/>
+                            <Column editable="true" title="Wind Speed  km/h" type="java.lang.Float">
+                              <Data value="13.0"/>
+                              <Data value="12.2"/>
+                              <Data value="11.0"/>
+                              <Data value="4.4"/>
+                              <Data value="5.5"/>
                             </Column>
-                            <Column editable="false" title="Precipitation (mm)" type="java.lang.Object">
-                              <Data value="12"/>
-                              <Data value="2"/>
-                              <Data value="18"/>
-                              <Data value="5"/>
-                              <Data value="1"/>
+                            <Column editable="false" title="Precipitation (mm)" type="java.lang.Float">
+                              <Data value="8.0"/>
+                              <Data value="7.6"/>
+                              <Data value="5.6"/>
+                              <Data value="4.3"/>
+                              <Data value="9.4"/>
                             </Column>
-                            <Column editable="false" title="Dew point" type="java.lang.Object">
-                              <Data value="11"/>
-                              <Data value="10"/>
-                              <Data value="7"/>
-                              <Data value="16.1"/>
-                              <Data value="20"/>
+                            <Column editable="true" title="Dew point" type="java.lang.Float">
+                              <Data value="15.3"/>
+                              <Data value="15.0"/>
+                              <Data value="14.2"/>
+                              <Data value="7.9"/>
+                              <Data value="23.3"/>
                             </Column>
                           </Table>
                         </Property>
                         <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                           <TableColumnModel selectionModel="0">
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="20" resizable="false">
                               <Title/>
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
@@ -315,12 +318,12 @@
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
                             </Column>
-                            <Column maxWidth="-1" minWidth="-1" prefWidth="100" resizable="false">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="100" resizable="true">
                               <Title/>
                               <Editor/>
                               <Renderer/>
@@ -365,29 +368,22 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Search"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextField1ActionPerformed"/>
-                  </Events>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="jComboBoxSearch">
+                <Component class="javax.swing.JComboBox" name="jComboBoxSortyBy">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="10">
+                      <StringArray count="6">
                         <StringItem index="0" value="S.No"/>
-                        <StringItem index="1" value="Country"/>
-                        <StringItem index="2" value="City"/>
-                        <StringItem index="3" value="Temperature"/>
-                        <StringItem index="4" value="Humidity"/>
-                        <StringItem index="5" value="UV Index"/>
-                        <StringItem index="6" value="Visibility"/>
-                        <StringItem index="7" value="Wind Speed"/>
-                        <StringItem index="8" value="Precipitation"/>
-                        <StringItem index="9" value="Dew point"/>
+                        <StringItem index="1" value="Temperature"/>
+                        <StringItem index="2" value="Humidity"/>
+                        <StringItem index="3" value="Wind Speed"/>
+                        <StringItem index="4" value="Precipitation"/>
+                        <StringItem index="5" value="Dew point"/>
                       </StringArray>
                     </Property>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxSearchActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxSortyByActionPerformed"/>
                   </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -459,6 +455,22 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDeleteHomeActionPerformed"/>
                   </Events>
                 </Component>
+                <Component class="javax.swing.JComboBox" name="jComboBoxSortingOrder">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="2">
+                        <StringItem index="0" value="Ascending"/>
+                        <StringItem index="1" value="Descending"/>
+                      </StringArray>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxSortingOrderActionPerformed"/>
+                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                  </AuxValues>
+                </Component>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="jPanelModifyData">
@@ -481,11 +493,6 @@
                       <Group type="102" attributes="0">
                           <EmptySpace pref="28" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" alignment="1" attributes="0">
-                                  <Component id="jLabelInsertWindSpeed" min="-2" pref="194" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jTextFieldInsertWindSpeed" min="-2" pref="167" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="102" alignment="1" attributes="0">
                                   <Component id="jLabelInsertTemperature" min="-2" pref="220" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
@@ -513,11 +520,18 @@
                                       <Component id="jSpinnerSno" min="-2" pref="80" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabelInsertWindSpeed" min="-2" pref="194" max="-2" attributes="0"/>
+                                      <Component id="btnClear" min="-2" pref="185" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="32767" attributes="0"/>
+                                  <Component id="jTextFieldInsertWindSpeed" min="-2" pref="167" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="150" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="169" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="19" pref="19" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Component id="jLabelInsertDewPoint1" pref="148" max="32767" attributes="0"/>
@@ -550,19 +564,18 @@
                                   <EmptySpace min="-2" pref="320" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="btnAddData" min="-2" pref="185" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="1" groupAlignment="0" attributes="0">
-                                          <Component id="jLabelInsertVisibility1" min="-2" pref="156" max="-2" attributes="0"/>
-                                          <Component id="jLabelInsertPrecipitation" min="-2" max="-2" attributes="0"/>
-                                      </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabelInsertVisibility1" min="-2" pref="156" max="-2" attributes="0"/>
+                                      <Component id="jLabelInsertPrecipitation" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jTextFieldInsertprecipitation" alignment="1" min="-2" pref="167" max="-2" attributes="0"/>
                                       <Component id="btnModifyDataHome" alignment="1" min="-2" pref="183" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="233" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="btnAddData" min="-2" pref="185" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -621,6 +634,7 @@
                                           <Group type="103" groupAlignment="3" attributes="0">
                                               <Component id="btnModifyDataHome" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
                                               <Component id="btnAddData" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
+                                              <Component id="btnClear" alignment="3" min="-2" pref="56" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
@@ -694,6 +708,7 @@
                 <Component class="javax.swing.JTextField" name="jTextFieldInsertTemperature">
                   <Events>
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldInsertTemperatureKeyPressed"/>
+                    <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldInsertTemperatureKeyReleased"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabelInsertUVIndex">
@@ -912,6 +927,28 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Clear"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnClear">
+                  <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="72" green="2b" red="12" type="rgb"/>
+                    </Property>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="MS Gothic" size="24" style="1"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Clear"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder/>
+                      </Border>
+                    </Property>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnClearActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
