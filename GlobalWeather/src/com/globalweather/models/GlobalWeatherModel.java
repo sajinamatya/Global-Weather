@@ -6,7 +6,7 @@ package com.globalweather.models;
 
 /**
  *
- * @author LENOVO
+ * @author Sajin Raj Amatya
  */
 public class GlobalWeatherModel {
      private int sno;
@@ -27,19 +27,19 @@ public class GlobalWeatherModel {
      * @param dewPoint
      * @param precipitation
      */
-    public GlobalWeatherModel(int sno, String countryName, String cityName, String uvIndex, float temperature, float humidity, String visibility, float windSpeed, float dewPoint, float precipitation) {
-        this.sno = sno;
-        this.countryName = countryName;
-        this.cityName = cityName;
-        this.uvIndex = uvIndex;
-        this.temperature = temperature;
-        this.humidity = humidity;
-        this.visibility = visibility;
-        this.windSpeed = windSpeed;
-        this.dewPoint = dewPoint;
-        this.precipitation = precipitation;
-    }
-    
+//    public GlobalWeatherModel(int sno, String countryName, String cityName, String uvIndex, float temperature, float humidity, String visibility, float windSpeed, float dewPoint, float precipitation) {
+//        this.sno = sno;
+//        this.countryName = countryName;
+//        this.cityName = cityName;
+//        this.uvIndex = uvIndex;
+//        this.temperature = temperature;
+//        this.humidity = humidity;
+//        this.visibility = visibility;
+//        this.windSpeed = windSpeed;
+//        this.dewPoint = dewPoint;
+//        this.precipitation = precipitation;
+//    }
+//    
    
    
 
@@ -216,5 +216,8 @@ public class GlobalWeatherModel {
         this.uvIndex = uvIndex;
     }
     
-    
+    @Override
+    public String toString() {
+        return "model{" + "sno=" + sno  + ", country=" + countryName + ", city name =" + cityName + ",temperature = "+ temperature +",humidity=" + humidity + ",visibility="+visibility+",windspeed ="+ windSpeed +",precipitation="+ precipitation +",dewPoint="+ dewPoint+'}';
+    } 
 }
