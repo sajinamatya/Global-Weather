@@ -25,7 +25,7 @@ public class GlobalWeather extends javax.swing.JFrame {
     public GlobalWeather() {
         initComponents();
         setTableDataToList();
-        jTable.getTableHeader().setBackground(Color.red);
+        jTableGlobalWeather.getTableHeader().setBackground(Color.red);
     }
 
     @SuppressWarnings("unchecked")
@@ -40,7 +40,7 @@ public class GlobalWeather extends javax.swing.JFrame {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelHomePage = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable = new javax.swing.JTable();
+        jTableGlobalWeather = new javax.swing.JTable();
         jTextField1 = new javax.swing.JTextField();
         jComboBoxSortyBy = new javax.swing.JComboBox<>();
         btnSearch = new javax.swing.JButton();
@@ -101,10 +101,10 @@ public class GlobalWeather extends javax.swing.JFrame {
 
         jPanelHomePage.setBackground(new java.awt.Color(9, 68, 121));
 
-        jTable.setBackground(new java.awt.Color(9, 68, 121));
-        jTable.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jTable.setForeground(new java.awt.Color(255, 255, 255));
-        jTable.setModel(new javax.swing.table.DefaultTableModel(
+        jTableGlobalWeather.setBackground(new java.awt.Color(9, 68, 121));
+        jTableGlobalWeather.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jTableGlobalWeather.setForeground(new java.awt.Color(255, 255, 255));
+        jTableGlobalWeather.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 { new Integer(1), "USA", "New York",  new Float(14.0),  new Float(80.0), "Low", "Poor",  new Float(13.0),  new Float(8.0),  new Float(15.3)},
                 { new Integer(2), "Nepal", "Kathmaandu",  new Float(12.0),  new Float(53.0), "High", "Moderate",  new Float(12.2),  new Float(7.6),  new Float(15.0)},
@@ -131,31 +131,31 @@ public class GlobalWeather extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        jTable.setGridColor(new java.awt.Color(0, 0, 0));
-        jTable.setRowHeight(40);
-        jTable.setSelectionBackground(new java.awt.Color(9, 68, 121));
-        jTable.setSelectionForeground(new java.awt.Color(0, 204, 0));
-        jTable.setShowGrid(true);
-        jTable.getTableHeader().setReorderingAllowed(false);
-        jTable.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableGlobalWeather.setGridColor(new java.awt.Color(0, 0, 0));
+        jTableGlobalWeather.setRowHeight(40);
+        jTableGlobalWeather.setSelectionBackground(new java.awt.Color(9, 68, 121));
+        jTableGlobalWeather.setSelectionForeground(new java.awt.Color(0, 204, 0));
+        jTableGlobalWeather.setShowGrid(true);
+        jTableGlobalWeather.getTableHeader().setReorderingAllowed(false);
+        jTableGlobalWeather.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableMouseClicked(evt);
+                jTableGlobalWeatherMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(jTable);
-        if (jTable.getColumnModel().getColumnCount() > 0) {
-            jTable.getColumnModel().getColumn(0).setResizable(false);
-            jTable.getColumnModel().getColumn(0).setPreferredWidth(20);
-            jTable.getColumnModel().getColumn(3).setResizable(false);
-            jTable.getColumnModel().getColumn(3).setPreferredWidth(100);
-            jTable.getColumnModel().getColumn(4).setResizable(false);
-            jTable.getColumnModel().getColumn(4).setPreferredWidth(60);
-            jTable.getColumnModel().getColumn(5).setResizable(false);
-            jTable.getColumnModel().getColumn(7).setPreferredWidth(100);
-            jTable.getColumnModel().getColumn(8).setResizable(false);
-            jTable.getColumnModel().getColumn(8).setPreferredWidth(100);
-            jTable.getColumnModel().getColumn(9).setResizable(false);
-            jTable.getColumnModel().getColumn(9).setPreferredWidth(50);
+        jScrollPane2.setViewportView(jTableGlobalWeather);
+        if (jTableGlobalWeather.getColumnModel().getColumnCount() > 0) {
+            jTableGlobalWeather.getColumnModel().getColumn(0).setResizable(false);
+            jTableGlobalWeather.getColumnModel().getColumn(0).setPreferredWidth(20);
+            jTableGlobalWeather.getColumnModel().getColumn(3).setResizable(false);
+            jTableGlobalWeather.getColumnModel().getColumn(3).setPreferredWidth(100);
+            jTableGlobalWeather.getColumnModel().getColumn(4).setResizable(false);
+            jTableGlobalWeather.getColumnModel().getColumn(4).setPreferredWidth(60);
+            jTableGlobalWeather.getColumnModel().getColumn(5).setResizable(false);
+            jTableGlobalWeather.getColumnModel().getColumn(7).setPreferredWidth(100);
+            jTableGlobalWeather.getColumnModel().getColumn(8).setResizable(false);
+            jTableGlobalWeather.getColumnModel().getColumn(8).setPreferredWidth(100);
+            jTableGlobalWeather.getColumnModel().getColumn(9).setResizable(false);
+            jTableGlobalWeather.getColumnModel().getColumn(9).setPreferredWidth(50);
         }
 
         jTextField1.setText("Search");
@@ -584,8 +584,8 @@ public class GlobalWeather extends javax.swing.JFrame {
                 JOptionPane.YES_NO_OPTION,
                 JOptionPane.QUESTION_MESSAGE);
         if (result == JOptionPane.YES_OPTION) {
-            int selectedRow = jTable.getSelectedRow();
-            DefaultTableModel tableModel = (DefaultTableModel) jTable.getModel();
+            int selectedRow = jTableGlobalWeather.getSelectedRow();
+            DefaultTableModel tableModel = (DefaultTableModel) jTableGlobalWeather.getModel();
 
             tableModel.removeRow(selectedRow);
         } else if (result == JOptionPane.NO_OPTION) {
@@ -634,7 +634,7 @@ public class GlobalWeather extends javax.swing.JFrame {
         
         if(!isDuplicateSno(sno)){
         GlobalWeatherModel weatherModel = new GlobalWeatherModel();
-        DefaultTableModel tableModel = (DefaultTableModel) jTable.getModel();
+        DefaultTableModel tableModel = (DefaultTableModel) jTableGlobalWeather.getModel();
         Object[] rowData = {sno,country,city,temperature,humidity,uvindex,visibility,windspeed,precipitation,dewpoint};
         tableModel.addRow(rowData);
         
@@ -665,7 +665,7 @@ public class GlobalWeather extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddDataActionPerformed
     
     private boolean isRowSelected(){
-        if(jTable.getSelectionModel().isSelectionEmpty()){
+        if(jTableGlobalWeather.getSelectionModel().isSelectionEmpty()){
             return true;
         }
         else{
@@ -678,10 +678,10 @@ public class GlobalWeather extends javax.swing.JFrame {
 
     }
      private boolean isDuplicateSno(int key){
-        int rowCount = jTable.getRowCount();
+        int rowCount = jTableGlobalWeather.getRowCount();
         
         for(int i = 0; i<rowCount; i++){
-            int tableId = Integer.parseInt(jTable.getValueAt(i, 0).toString());
+            int tableId = Integer.parseInt(jTableGlobalWeather.getValueAt(i, 0).toString());
             if(key == tableId){
                 return true;
             }
@@ -695,7 +695,7 @@ public class GlobalWeather extends javax.swing.JFrame {
      float[] temperature,humidity,windspeed,precipitation, dewpoint;
      String[] country,city,uvindex,visibility;
     private void getTableData(){
-        int row = jTable.getRowCount();
+        int row = jTableGlobalWeather.getRowCount();
         sno = new int[row];
         temperature = new float[row];
         humidity = new float[row];
@@ -707,16 +707,16 @@ public class GlobalWeather extends javax.swing.JFrame {
         uvindex = new String[row];
         visibility  = new String[row];
         for(int i = 0; i < row; i++){
-            sno[i] = Integer.parseInt((String)jTable.getValueAt(i, 0));
-            country[i] = (String) jTable.getValueAt(i, 1);
-            city[i] = (String) jTable.getValueAt(i, 2);
-            temperature[i] = Float.parseFloat((String)jTable.getValueAt(i, 3));
-            humidity[i] = Float.parseFloat((String)jTable.getValueAt(i, 4));
-            uvindex[i] = (String) jTable.getValueAt(i, 5);
-            visibility[i] = (String) jTable.getValueAt(i, 6);
-            windspeed[i] = Float.parseFloat((String)jTable.getValueAt(i, 7));
-            precipitation[i] = Float.parseFloat((String)jTable.getValueAt(i, 8));
-            dewpoint[i] = Float.parseFloat((String)jTable.getValueAt(i, 9));
+            sno[i] = Integer.parseInt((String)jTableGlobalWeather.getValueAt(i, 0));
+            country[i] = (String) jTableGlobalWeather.getValueAt(i, 1);
+            city[i] = (String) jTableGlobalWeather.getValueAt(i, 2);
+            temperature[i] = Float.parseFloat((String)jTableGlobalWeather.getValueAt(i, 3));
+            humidity[i] = Float.parseFloat((String)jTableGlobalWeather.getValueAt(i, 4));
+            uvindex[i] = (String) jTableGlobalWeather.getValueAt(i, 5);
+            visibility[i] = (String) jTableGlobalWeather.getValueAt(i, 6);
+            windspeed[i] = Float.parseFloat((String)jTableGlobalWeather.getValueAt(i, 7));
+            precipitation[i] = Float.parseFloat((String)jTableGlobalWeather.getValueAt(i, 8));
+            dewpoint[i] = Float.parseFloat((String)jTableGlobalWeather.getValueAt(i, 9));
             
         }
         
@@ -730,11 +730,18 @@ public class GlobalWeather extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnsortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsortActionPerformed
+        String sortorder = jComboBoxSortingOrder.getSelectedItem().toString();
+        String sortby = jComboBoxSortyBy.getSelectedItem().toString();
+        int tableSize= jTableGlobalWeather.getRowCount();
         
-        int tableSize= jTable.getRowCount();
-        DefaultTableModel tableModel = (DefaultTableModel) jTable.getModel();
         GlobalWeatherSortAlgorithm sortmodel = new GlobalWeatherSortAlgorithm();
-        sortmodel.insertionSort(ListGlobalWeather);
+        
+        sortmodel.insertionSortAscending(ListGlobalWeather,sortby,sortorder);
+        
+        
+        
+        
+        DefaultTableModel tableModel = (DefaultTableModel) jTableGlobalWeather.getModel();
         
          for (int i = 0; i < tableSize; i++) {
              tableModel.setValueAt(String.valueOf(ListGlobalWeather.get(i).getSno()), i, 0);
@@ -749,9 +756,8 @@ public class GlobalWeather extends javax.swing.JFrame {
              tableModel.setValueAt((ListGlobalWeather.get(i).getDewPoint()), i, 9);
          }
         
-        
-//        Object[] sort =;
-//        sortmodel.insertionSort(sort);
+        System.out.println(sortorder);
+     
     }//GEN-LAST:event_btnsortActionPerformed
 
     private void jComboBoxSortyByActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSortyByActionPerformed
@@ -851,19 +857,19 @@ public class GlobalWeather extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_jTextFieldInsertCityKeyPressed
 
-    private void jTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableMouseClicked
-        int currentRow = jTable.getSelectedRow();
-        jSpinnerSno.setValue(Integer.parseInt(jTable.getValueAt(currentRow, 0).toString()));
-        jTextFieldInsertCountry.setText(jTable.getValueAt(currentRow, 1).toString());
-        jTextFieldInsertCity.setText(jTable.getValueAt(currentRow, 2).toString());
-        jTextFieldInsertTemperature.setText(jTable.getValueAt(currentRow, 3).toString());
-        jTextFieldInsertHumidity.setText(jTable.getValueAt(currentRow, 4).toString());
-        jTextFieldInsertWindSpeed.setText(jTable.getValueAt(currentRow, 7).toString());
-        jTextFieldInsertprecipitation.setText(jTable.getValueAt(currentRow, 8).toString());
-        jTextFieldInsertDewPoint.setText(jTable.getValueAt(currentRow, 9).toString());
+    private void jTableGlobalWeatherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableGlobalWeatherMouseClicked
+        int currentRow = jTableGlobalWeather.getSelectedRow();
+        jSpinnerSno.setValue(Integer.parseInt(jTableGlobalWeather.getValueAt(currentRow, 0).toString()));
+        jTextFieldInsertCountry.setText(jTableGlobalWeather.getValueAt(currentRow, 1).toString());
+        jTextFieldInsertCity.setText(jTableGlobalWeather.getValueAt(currentRow, 2).toString());
+        jTextFieldInsertTemperature.setText(jTableGlobalWeather.getValueAt(currentRow, 3).toString());
+        jTextFieldInsertHumidity.setText(jTableGlobalWeather.getValueAt(currentRow, 4).toString());
+        jTextFieldInsertWindSpeed.setText(jTableGlobalWeather.getValueAt(currentRow, 7).toString());
+        jTextFieldInsertprecipitation.setText(jTableGlobalWeather.getValueAt(currentRow, 8).toString());
+        jTextFieldInsertDewPoint.setText(jTableGlobalWeather.getValueAt(currentRow, 9).toString());
       
-        jComboBox1.setSelectedItem(jTable.getValueAt(currentRow, 5));
-    }//GEN-LAST:event_jTableMouseClicked
+        jComboBox1.setSelectedItem(jTableGlobalWeather.getValueAt(currentRow, 5));
+    }//GEN-LAST:event_jTableGlobalWeatherMouseClicked
 
     private void jComboBoxSortingOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSortingOrderActionPerformed
         // TODO add your handling code here:
@@ -888,20 +894,20 @@ public class GlobalWeather extends javax.swing.JFrame {
     }//GEN-LAST:event_btnClearActionPerformed
    
     private void setTableDataToList(){
-        int row = jTable.getRowCount();
+        int row = jTableGlobalWeather.getRowCount();
         
         for(int i = 0 ; i<row ; i++){
             GlobalWeatherModel weatherModel = new GlobalWeatherModel();
-            weatherModel.setSno(Integer.parseInt(jTable.getValueAt(i, 0).toString()));
-            weatherModel.setCountryName(jTable.getValueAt(i,1).toString());
-            weatherModel.setCityName(jTable.getValueAt(i,2).toString());
-            weatherModel.setTemperature(Float.parseFloat(jTable.getValueAt(i, 3).toString()));
-            weatherModel.setHumidity(Float.parseFloat(jTable.getValueAt(i, 4).toString()));
-            weatherModel.setUvIndex(jTable.getValueAt(i,5).toString());
-            weatherModel.setVisibility(jTable.getValueAt(i,6).toString());
-            weatherModel.setWindSpeed(Float.parseFloat(jTable.getValueAt(i, 7).toString()));
-            weatherModel.setPrecipitation(Float.parseFloat(jTable.getValueAt(i, 8).toString()));
-            weatherModel.setDewPoint(Float.parseFloat(jTable.getValueAt(i, 9).toString()));
+            weatherModel.setSno(Integer.parseInt(jTableGlobalWeather.getValueAt(i, 0).toString()));
+            weatherModel.setCountryName(jTableGlobalWeather.getValueAt(i,1).toString());
+            weatherModel.setCityName(jTableGlobalWeather.getValueAt(i,2).toString());
+            weatherModel.setTemperature(Float.parseFloat(jTableGlobalWeather.getValueAt(i, 3).toString()));
+            weatherModel.setHumidity(Float.parseFloat(jTableGlobalWeather.getValueAt(i, 4).toString()));
+            weatherModel.setUvIndex(jTableGlobalWeather.getValueAt(i,5).toString());
+            weatherModel.setVisibility(jTableGlobalWeather.getValueAt(i,6).toString());
+            weatherModel.setWindSpeed(Float.parseFloat(jTableGlobalWeather.getValueAt(i, 7).toString()));
+            weatherModel.setPrecipitation(Float.parseFloat(jTableGlobalWeather.getValueAt(i, 8).toString()));
+            weatherModel.setDewPoint(Float.parseFloat(jTableGlobalWeather.getValueAt(i, 9).toString()));
             ListGlobalWeather.add(weatherModel);
         }
         System.out.println(ListGlobalWeather);
@@ -978,7 +984,7 @@ public class GlobalWeather extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinnerSno;
     private javax.swing.JTabbedPane jTabbedPane1;
-    public javax.swing.JTable jTable;
+    public javax.swing.JTable jTableGlobalWeather;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextFieldInsertCity;
     private javax.swing.JTextField jTextFieldInsertCountry;
