@@ -13,11 +13,9 @@ import java.util.ArrayList;
  *
  * @author Sajin Raj Amatya
  */
-public class GlobalWeatherSortAlgorithm {
+public class GlobalWeatherAlgorithm {
     
-    
-
-     public ArrayList<GlobalWeatherModel> insertionSortAscending( ArrayList<GlobalWeatherModel> globalweatherlist,String column,String orderby) {
+     public ArrayList<GlobalWeatherModel> insertionSort( ArrayList<GlobalWeatherModel> globalweatherlist,String column,String orderby) {
      int n = globalweatherlist.size();
      for (int i = 1; i < n; i++){
          var key = globalweatherlist.get(i);
@@ -69,6 +67,19 @@ public class GlobalWeatherSortAlgorithm {
                      compare = globalweatherlist.get(j).getDewPoint()> key.getDewPoint();}
                       else{compare = globalweatherlist.get(j).getDewPoint()< key.getDewPoint();}
                     break;
+                    
+                 case "country":
+                      if (orderby.equals("Ascending")){
+                     compare = ((globalweatherlist.get(j).getCountryName()).compareTo( key.getCountryName()) > 0);}
+                      else{ compare = ((globalweatherlist.get(j).getCountryName()).compareTo( key.getCountryName()) < 0);}
+                    break;
+                    
+                 case "city":
+                      if (orderby.equals("Ascending")){
+                     compare = ((globalweatherlist.get(j).getCityName()).compareTo( key.getCityName()) > 0);}
+                      else{ compare = ((globalweatherlist.get(j).getCityName()).compareTo( key.getCityName()) < 0);}
+                    break;
+                 
              }
              if (compare == true) {
                     globalweatherlist.set(j + 1, globalweatherlist.get(j));
@@ -91,27 +102,46 @@ public class GlobalWeatherSortAlgorithm {
     
     
 }
-     public ArrayList<GlobalWeatherModel> insertionSortDescending( ArrayList<GlobalWeatherModel> globalweatherlist) {
-     int n = globalweatherlist.size();
-     for (int i = 1; i < n; i++){
-         var key = globalweatherlist.get(i);
-         int j = i-1 ;
-         
-         while(j >= 0 && globalweatherlist.get(j).getTemperature() < key.getTemperature() ){
-             globalweatherlist.set(j + 1, globalweatherlist.get(j));
-                j = j - 1;
-         }
-         globalweatherlist.set(j + 1, key);
-     }
-         
-    System.out.println("Sorted Weather List:");
-        for (GlobalWeatherModel data : globalweatherlist) {
-            System.out.println(data);
-        }
-        
+     
+  public int binarySearchByString(ArrayList<GlobalWeatherModel> globalweatherlist, String searchedValue, String searchedByColumn) {
        
-    return globalweatherlist;
+       int low = 0 ;
+       int high = globalweatherlist.size() - 1 ;
     
+    while (low <= high) {
+      int mid = low + (high - low) / 2;
+      if(searchedByColumn.equals("country")){
+         
+         String middleValueOfColumn = globalweatherlist.get(mid).getCountryName();
+      
+        if((middleValueOfColumn.compareTo(searchedValue))==0){
+            return mid; 
+        }
+         else if ((middleValueOfColumn.compareTo(searchedValue)) < 0 ){
+            low = mid + 1 ;
+        }
+         else{
+            high = mid -1 ; 
+        }
+      
+      }
+      else{
+          String middleValueOfColumn = globalweatherlist.get(mid).getCityName();
+          if((middleValueOfColumn.compareTo(searchedValue))==0){
+            return mid; 
+        }
+         else if ((middleValueOfColumn.compareTo(searchedValue)) < 0 ){
+            low = mid + 1 ;
+        }
+         else{
+            high = mid -1 ; 
+        }
+      }
+    }
+      
+     return -1 ; 
+  }
+     
     
 }
-}
+
