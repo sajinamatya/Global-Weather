@@ -7,7 +7,7 @@ package com.globalweather.views;
 import com.globalweather.controller.GlobalWeatherAlgorithm;
 
 import com.globalweather.models.GlobalWeatherModel;
-import java.awt.Color;
+
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
@@ -27,10 +27,11 @@ public class GlobalWeather extends javax.swing.JFrame {
     public GlobalWeather() {
         initComponents();
         setTableDataToList();
-        jTableGlobalWeather.getTableHeader().setBackground(Color.red);
+        
     }
 
     @SuppressWarnings("unchecked")
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -202,11 +203,6 @@ public class GlobalWeather extends javax.swing.JFrame {
         });
 
         jComboBoxSortingOrder.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ascending", "Descending" }));
-        jComboBoxSortingOrder.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxSortingOrderActionPerformed(evt);
-            }
-        });
 
         jComboBoxSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "country", "city" }));
 
@@ -304,11 +300,6 @@ public class GlobalWeather extends javax.swing.JFrame {
         });
 
         jComboBoxUVindex.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Low", "Moderate", "High", "Very High" }));
-        jComboBoxUVindex.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxUVindexActionPerformed(evt);
-            }
-        });
 
         jLabelInsertPrecipitation.setFont(new java.awt.Font("MS Gothic", 1, 24)); // NOI18N
         jLabelInsertPrecipitation.setForeground(new java.awt.Color(255, 255, 255));
@@ -377,6 +368,9 @@ public class GlobalWeather extends javax.swing.JFrame {
         jTextFieldInsertprecipitation.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldInsertprecipitationKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextFieldInsertprecipitationKeyReleased(evt);
             }
         });
 
@@ -601,6 +595,11 @@ public class GlobalWeather extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /** 
+     Function is called when the delete button is clicked on GUI 
+     @param ActionEvent 
+     @return void 
+     */
     private void btnDeleteHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteHomeActionPerformed
        if(!isRowSelected()){
         int result = JOptionPane.showConfirmDialog(null, "Sure? You want to delete the data ?", "Swing Tester",
@@ -621,21 +620,35 @@ public class GlobalWeather extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnDeleteHomeActionPerformed
-
+ 
+    /** 
+     Function is called when the InsertData button is clicked on GUI 
+     @param ActionEvent 
+     @return void 
+     */
     private void btnInsertDataHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInsertDataHomeActionPerformed
         jTabbedPane1.setSelectedIndex(1);
     }//GEN-LAST:event_btnInsertDataHomeActionPerformed
-
+ /** 
+     Function is called when the Home button is clicked on GUI 
+     @param ActionEvent 
+     @return void 
+     */
     private void btnHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHomeActionPerformed
         // TODO add your handling code here:
         jTabbedPane1.setSelectedIndex(0);
     }//GEN-LAST:event_btnHomeActionPerformed
 
+     /** 
+     Function is called when the ADD button is clicked on GUI then it adds the data entered in the text field to table 
+     @param ActionEvent 
+     @return void 
+     */
     private void btnAddDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddDataActionPerformed
        
         if (isTextFieldEmpty()){
             
-            JOptionPane.showMessageDialog(this, "please enter all value ");
+            JOptionPane.showMessageDialog(this, "please enter all value in textfield ");
         }
         
         jRadioButtonClear.setActionCommand("Clear");
@@ -686,7 +699,11 @@ public class GlobalWeather extends javax.swing.JFrame {
 
         
     }//GEN-LAST:event_btnAddDataActionPerformed
-    
+     /** 
+     Function checks whether the row is selected in JTable of the system 
+     @param none  
+     @return Boolean 
+     */
     private boolean isRowSelected(){
         if(jTableGlobalWeather.getSelectionModel().isSelectionEmpty()){
             return true;
@@ -695,11 +712,24 @@ public class GlobalWeather extends javax.swing.JFrame {
             return false;
         }
     }
+    
+    /** 
+     Function checks whether the text field is empty or not 
+     @param none  
+     @return Boolean 
+     */
+    
     private boolean isTextFieldEmpty(){
     return jTextFieldInsertCountry.getText().isEmpty() || jTextFieldInsertCity.getText().isEmpty() || jTextFieldInsertTemperature.getText().isEmpty() || jTextFieldInsertWindSpeed.getText().isEmpty()
                 || jTextFieldInsertHumidity.getText().isEmpty() || buttonGroupVisibility.getSelection() ==null || jTextFieldInsertprecipitation.getText().isEmpty() || jTextFieldInsertDewPoint.getText().isEmpty(); 
 
     }
+    
+    /** 
+     Function checks whether the entered serial number in the text field exist or not in the system.
+     @param none  
+     @return Boolean 
+     */
      private boolean isDuplicateSno(int key){
         int rowCount = jTableGlobalWeather.getRowCount();
         
@@ -712,41 +742,13 @@ public class GlobalWeather extends javax.swing.JFrame {
         return false;
     }
      
-     
-//     // Getting data from Jtable 
-//     int[] sno;
-//     float[] temperature,humidity,windspeed,precipitation, dewpoint;
-//     String[] country,city,uvindex,visibility;
-//    private void getTableData(){
-//        int row = jTableGlobalWeather.getRowCount();
-//        sno = new int[row];
-//        temperature = new float[row];
-//        humidity = new float[row];
-//        windspeed = new float[row];
-//        precipitation = new float[row];
-//        dewpoint  = new float[row];
-//        country = new String[row];
-//        city = new String[row];
-//        uvindex = new String[row];
-//        visibility  = new String[row];
-//        for(int i = 0; i < row; i++){
-//            sno[i] = Integer.parseInt((String)jTableGlobalWeather.getValueAt(i, 0));
-//            country[i] = (String) jTableGlobalWeather.getValueAt(i, 1);
-//            city[i] = (String) jTableGlobalWeather.getValueAt(i, 2);
-//            temperature[i] = Float.parseFloat((String)jTableGlobalWeather.getValueAt(i, 3));
-//            humidity[i] = Float.parseFloat((String)jTableGlobalWeather.getValueAt(i, 4));
-//            uvindex[i] = (String) jTableGlobalWeather.getValueAt(i, 5);
-//            visibility[i] = (String) jTableGlobalWeather.getValueAt(i, 6);
-//            windspeed[i] = Float.parseFloat((String)jTableGlobalWeather.getValueAt(i, 7));
-//            precipitation[i] = Float.parseFloat((String)jTableGlobalWeather.getValueAt(i, 8));
-//            dewpoint[i] = Float.parseFloat((String)jTableGlobalWeather.getValueAt(i, 9));
-//            
-//        }
-//        
-//        
-//    }
 
-    
+
+    /** 
+     Function is called when the search button is click on GUI  and perform search operation 
+     @param ActionEvent evt  
+     @return void 
+     */
     
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         String searchByColumn = jComboBoxSearch.getSelectedItem().toString();
@@ -769,7 +771,11 @@ public class GlobalWeather extends javax.swing.JFrame {
         }
        
     }//GEN-LAST:event_btnSearchActionPerformed
-
+ /** 
+     Function is called when the sort button is click on GUI  and perform sort operation either in ascending or descending order based on selected column 
+     @param ActionEvent evt  
+     @return void 
+     */
     private void btnsortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsortActionPerformed
         String sortorder = jComboBoxSortingOrder.getSelectedItem().toString();
         String sortby = jComboBoxSortyBy.getSelectedItem().toString();
@@ -787,7 +793,11 @@ public class GlobalWeather extends javax.swing.JFrame {
         System.out.println(sortorder);
      
     }//GEN-LAST:event_btnsortActionPerformed
-    
+     /** 
+     This function gets the sorted value from the array list and updates it to the table 
+     @param ArrayList<GlobalWeatherModel> ListGlobalWeather  
+     @return void 
+     */
     private void updateTableDataSorted(ArrayList<GlobalWeatherModel> ListGlobalWeather){
         DefaultTableModel tableModel = (DefaultTableModel) jTableGlobalWeather.getModel();
         int tableSize= jTableGlobalWeather.getRowCount();
@@ -809,7 +819,11 @@ public class GlobalWeather extends javax.swing.JFrame {
     private void jComboBoxSortyByActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSortyByActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxSortyByActionPerformed
-
+ /** 
+     This function is called when the modify button is clicked on GUI and it modifies the existing data of the table 
+     @param ActionEvent evt  
+     @return void 
+     */
     private void btnModifyDataHomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModifyDataHomeActionPerformed
        if(!isRowSelected()){
         int selectedRow = jTableGlobalWeather.getSelectedRow();
@@ -846,11 +860,11 @@ public class GlobalWeather extends javax.swing.JFrame {
        }
        else {  JOptionPane.showMessageDialog(this, "Please select the row you want to update from the table ");}
     }//GEN-LAST:event_btnModifyDataHomeActionPerformed
-
-    private void jComboBoxUVindexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxUVindexActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxUVindexActionPerformed
-
+ /** 
+     This function is called when the key is pressed in temperature text field and validates the data
+     * @param java.awt.event.KeyEvent evt  
+     @return void 
+     */
     private void jTextFieldInsertTemperatureKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldInsertTemperatureKeyPressed
         char c = evt.getKeyChar();
         
@@ -869,7 +883,11 @@ public class GlobalWeather extends javax.swing.JFrame {
        
        
     }//GEN-LAST:event_jTextFieldInsertTemperatureKeyPressed
-
+/** 
+     This function is called when the key is pressed in wind speed text field and validates the data
+     * @param java.awt.event.KeyEvent evt  
+     @return void 
+     */
     private void jTextFieldInsertWindSpeedKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldInsertWindSpeedKeyPressed
         char c = evt.getKeyChar();
         if(Character.isDigit(c) ||c == KeyEvent.VK_BACK_SPACE || c == '.'|| c =='-' ){
@@ -882,7 +900,11 @@ public class GlobalWeather extends javax.swing.JFrame {
             
         }    
     }//GEN-LAST:event_jTextFieldInsertWindSpeedKeyPressed
-
+/** 
+     This function is called when the key is pressed in humidity  text field and validates the data
+     * @param java.awt.event.KeyEvent evt  
+     @return void 
+     */
     private void jTextFieldInsertHumidityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldInsertHumidityKeyPressed
          char c = evt.getKeyChar();
         if(Character.isDigit(c) ||c == KeyEvent.VK_BACK_SPACE || c == '.'||c =='-'){
@@ -895,7 +917,11 @@ public class GlobalWeather extends javax.swing.JFrame {
             
         } 
     }//GEN-LAST:event_jTextFieldInsertHumidityKeyPressed
-
+/** 
+     This function is called when the key is pressed in dew point text field and validates the data
+     * @param java.awt.event.KeyEvent evt  
+     @return void 
+     */
     private void jTextFieldInsertDewPointKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldInsertDewPointKeyPressed
          char c = evt.getKeyChar();
         if(Character.isDigit(c) ||c == KeyEvent.VK_BACK_SPACE || c == '.'|| c =='-'){
@@ -908,7 +934,11 @@ public class GlobalWeather extends javax.swing.JFrame {
             
         } 
     }//GEN-LAST:event_jTextFieldInsertDewPointKeyPressed
-
+/** 
+     This function is called when the key is pressed in country text field and validates the data
+     * @param java.awt.event.KeyEvent evt  
+     @return void 
+     */
     private void jTextFieldInsertCountryKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldInsertCountryKeyPressed
         char c = (char) evt.getKeyCode();
         if(Character.isAlphabetic(c) ||c == KeyEvent.VK_BACK_SPACE || c == '.'||c == KeyEvent.VK_SHIFT || c == KeyEvent.VK_SPACE ){
@@ -921,7 +951,11 @@ public class GlobalWeather extends javax.swing.JFrame {
             
         } 
     }//GEN-LAST:event_jTextFieldInsertCountryKeyPressed
-
+/** 
+     This function is called when the key is pressed in city text field and validates the data
+     * @param java.awt.event.KeyEvent evt  
+     @return void 
+     */
     private void jTextFieldInsertCityKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldInsertCityKeyPressed
         char c = (char) evt.getKeyCode();
         if(Character.isAlphabetic(c) ||c == KeyEvent.VK_BACK_SPACE || c == '.'||c == KeyEvent.VK_SHIFT || c == KeyEvent.VK_SPACE ){
@@ -934,7 +968,11 @@ public class GlobalWeather extends javax.swing.JFrame {
             
         } 
     }//GEN-LAST:event_jTextFieldInsertCityKeyPressed
-
+/** 
+     This function is called when the row is selected from the Ttable and sets the value to the text field.
+     * @param java.awt.event.MouseEvent evt 
+     @return void 
+     */
     private void jTableGlobalWeatherMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableGlobalWeatherMouseClicked
         int currentRow = jTableGlobalWeather.getSelectedRow();
         
@@ -948,10 +986,6 @@ public class GlobalWeather extends javax.swing.JFrame {
         
         jComboBoxUVindex.setSelectedItem(jTableGlobalWeather.getValueAt(currentRow, 5));
     }//GEN-LAST:event_jTableGlobalWeatherMouseClicked
-
-    private void jComboBoxSortingOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxSortingOrderActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxSortingOrderActionPerformed
 
     private void jTextFieldInsertTemperatureKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldInsertTemperatureKeyReleased
        float temperature = Float.parseFloat(jTextFieldInsertTemperature.getText());
@@ -970,7 +1004,11 @@ public class GlobalWeather extends javax.swing.JFrame {
         buttonGroupVisibility.setSelected(null, rootPaneCheckingEnabled);
          jTextFieldInsertTemperature.setText("");
     }//GEN-LAST:event_btnClearActionPerformed
-
+/** 
+     This function is called when the key is released from the humidity text field and validates if the data is with in the range of 0 to 100
+     * @param java.awt.event.KeyEvent evt 
+     @return void 
+     */
     private void jTextFieldInsertHumidityKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldInsertHumidityKeyReleased
         float humidity = Float.parseFloat(jTextFieldInsertHumidity.getText());
       if(humidity  < 0 || humidity  > 100 ){ 
@@ -978,13 +1016,21 @@ public class GlobalWeather extends javax.swing.JFrame {
                         jTextFieldInsertHumidity.setText("");
        }
     }//GEN-LAST:event_jTextFieldInsertHumidityKeyReleased
-
+/** 
+     This function is called when the key is released from the dew point   and validates if the data is with in the range of -90 to 35
+     * @param java.awt.event.KeyEvent evt 
+     @return void 
+     */
     private void jTextFieldInsertDewPointKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldInsertDewPointKeyReleased
         float dewpoint  = Float.parseFloat(jTextFieldInsertDewPoint.getText());
         if (dewpoint < -90 || dewpoint > 35){
             JOptionPane.showMessageDialog(this, "please enter the value within the range -90 to 35 degree celcius");}
     }//GEN-LAST:event_jTextFieldInsertDewPointKeyReleased
-
+/** 
+     This function is called when the key is released from the wind speed text field and validates if the data is with in the range of 0 to 430
+     * @param java.awt.event.KeyEvent evt 
+     @return void 
+     */
     private void jTextFieldInsertWindSpeedKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldInsertWindSpeedKeyReleased
           float windspeed  = Float.parseFloat(jTextFieldInsertWindSpeed.getText());
           if( windspeed <0 || windspeed > 430){
@@ -992,7 +1038,11 @@ public class GlobalWeather extends javax.swing.JFrame {
           }
               
     }//GEN-LAST:event_jTextFieldInsertWindSpeedKeyReleased
-
+/** 
+     This function is called when the key is pressed from the precipitation text field and validates data
+     * @param java.awt.event.KeyEvent evt 
+     @return void 
+     */
     private void jTextFieldInsertprecipitationKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldInsertprecipitationKeyPressed
         char c = evt.getKeyChar();
         if(Character.isDigit(c) ||c == KeyEvent.VK_BACK_SPACE || c == '.'|| c =='-'){
@@ -1005,7 +1055,22 @@ public class GlobalWeather extends javax.swing.JFrame {
             
         } 
     }//GEN-LAST:event_jTextFieldInsertprecipitationKeyPressed
-   
+/** 
+     This function is called when the key is released from the precipitation text field and validates if the data is with in the range of 0 to 30
+     * @param java.awt.event.KeyEvent evt 
+     @return void 
+     */
+    private void jTextFieldInsertprecipitationKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldInsertprecipitationKeyReleased
+       float precipitation  = Float.parseFloat(jTextFieldInsertprecipitation.getText());
+          if( precipitation <0 || precipitation> 30){
+              JOptionPane.showMessageDialog(this, "Please enter the value within the range of 0 to 30mm");
+          }
+    }//GEN-LAST:event_jTextFieldInsertprecipitationKeyReleased
+   /** 
+     This function fetches the data from the jtable and stores the data to the array list in the form of object model
+     * @param none
+     @return void 
+     */
     private void setTableDataToList(){
         int row = jTableGlobalWeather.getRowCount();
         
