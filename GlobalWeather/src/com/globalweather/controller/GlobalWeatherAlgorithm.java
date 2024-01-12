@@ -105,8 +105,8 @@ public class GlobalWeatherAlgorithm {
      
   public int binarySearchByString(ArrayList<GlobalWeatherModel> globalweatherlist, String searchedValue, String searchedByColumn) {
        
-       int low = 0 ;
-       int high = globalweatherlist.size() - 1 ;
+    int low = 0 ;
+    int high = globalweatherlist.size() - 1 ;
     
     while (low <= high) {
       int mid = low + (high - low) / 2;
@@ -138,7 +138,6 @@ public class GlobalWeatherAlgorithm {
         }
       }
     }
-      
      return -1 ; 
   }
      
