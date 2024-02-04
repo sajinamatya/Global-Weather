@@ -10,13 +10,22 @@
    
   # installation 
   ``` git clone https://github.com/sajinamatya/Global-Weather.git```
-        open netbeans > file > open project > clone file 
+        
+    open netbeans > file > open project > clone file > run file 
+    
+
+
+
+
 
 
 
 
   
   ![image](https://github.com/sajinamatya/Global-Weather/assets/66240249/7355fc1b-5313-471b-accd-24ef1724eb81)
+
+
+
 
   
   ![image](https://github.com/sajinamatya/Global-Weather/assets/66240249/3079dbc8-cb39-4d89-98a4-c409d84729af)
