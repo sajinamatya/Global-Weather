@@ -11,7 +11,7 @@
   # installation 
   ``` git clone https://github.com/sajinamatya/Global-Weather.git```
         
-    open netbeans > file > open project > clone file > run file 
+    open netbeans -> file -> open project -> choose the clone git hub file path   -> run file 
     
 
 
