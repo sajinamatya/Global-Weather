@@ -35,6 +35,9 @@ based on the selected column and also searching functionality based on the selec
 
 # Workflow  
 (MVC pattern)
+
+
+
 ![image](https://github.com/sajinamatya/Global-Weather/assets/66240249/102fd974-73e6-4279-bdd3-f2e372b5b325)
 
 
